@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  backend_dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:5432"
+    volumes:
+      - ./backend/database.sqlite:/app/database.sqlite
+    environment:
+      - PORT=5432
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://backend_dev:5432
+    depends_on:
+      - backend_dev
