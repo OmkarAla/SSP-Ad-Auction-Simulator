@@ -1,0 +1,6 @@
+# backend/.gitignore
+node_modules/
+dist/
+database.sqlite
+.env
+*.log
