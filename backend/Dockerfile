@@ -16,7 +16,7 @@ RUN npm run build
 # Production stage
 FROM node:20-alpine
 
-WORKDIR /app
+WORKDIR /
 
 # Install runtime dependencies for sqlite3
 RUN apk add --no-cache sqlite-libs
