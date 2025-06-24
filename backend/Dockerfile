@@ -22,10 +22,10 @@ WORKDIR /app
 RUN apk add --no-cache sqlite-libs
 
 COPY package*.json ./
-RUN npm install --production
+RUN npm install --omit=dev
 
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/database.sqlite ./database.sqlite
+# Note: database.sqlite will be created by db.ts on startup
 
 EXPOSE 3001
 
